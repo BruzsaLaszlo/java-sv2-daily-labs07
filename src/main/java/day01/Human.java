@@ -23,7 +23,7 @@ public class Human {
     }
 
     private boolean isNameValid(String name) {
-        return name.trim().split("[ ]").length > 1;
+        return name !=null && name.trim().split("[ ]").length > 1;
     }
 
     public String getName() {
