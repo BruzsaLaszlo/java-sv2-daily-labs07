@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,12 +33,23 @@ class StoreTest {
     }
 
     @Test
-    void writeAllProductIn() throws IOException {
+    void writedFileTest() throws IOException {
 
         String actual = store.writeAllProductIn(Month.MAY);
         String expected = Files.readString(store.getPath());
 
         assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void writedProductTest() throws IOException {
+
+        String actual = store.writeAllProductIn(Month.MAY);
+        List<String> lines = Files.readAllLines(store.getPath());
+
+        String[] firstLine = lines.get(0).split(";");
+        assertEquals("alma", firstLine[0]);
 
     }
 }
