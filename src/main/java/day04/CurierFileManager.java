@@ -12,16 +12,8 @@ public class CurierFileManager {
         Courier courier = new Courier();
 
         List<String> lines = readFromFile(path);
-
         for (String line : lines) {
-
-            String[] raw = line.split("[ ]");
-            Ride ride = new Ride(
-                    Integer.parseInt(raw[0]),
-                    Integer.parseInt(raw[1]),
-                    Integer.parseInt(raw[2])
-            );
-
+            Ride ride = createRideFrom(line);
             courier.addRide(ride);
         }
 
@@ -36,6 +28,17 @@ public class CurierFileManager {
         } catch (IOException e) {
             throw new IllegalArgumentException("no file: " + path);
         }
+
+    }
+
+    private Ride createRideFrom(String line) {
+
+        String[] raw = line.split("[ ]");
+        return new Ride(
+                Integer.parseInt(raw[0]),
+                Integer.parseInt(raw[1]),
+                Integer.parseInt(raw[2])
+        );
 
     }
 

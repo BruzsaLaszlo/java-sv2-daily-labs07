@@ -2,9 +2,9 @@ package day04;
 
 public class Ride {
 
-    private int day;
-    private int count;
-    private int distance;
+    private final int day;
+    private final int count;
+    private final int distance;
 
     public Ride(int day, int count, int distance) {
         this.day = day;
